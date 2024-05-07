@@ -1,5 +1,70 @@
+/*****                 ****/
+/*****      RESET      ****/
+/*****                 ****/
 *{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+}
+
+/*****                 ****/
+/***** GENERAL _STYLE  ****/
+/*****                 ****/
+.img-pos-left{
+    object-position: right;
+}
+.img-card.active{
+    display: block;
+}
+
+.set-img-car.selected{
+    opacity: unset;
+}
+
+/*****                 ****/
+/***** CONTENT _STYLE  ****/
+/*****                 ****/
+
+#main{
+    width: 100vw;
+    height: 100vh;
+}
+
+.container{
+    width: 100%;
+    height: 100%;
+    background-color: silver;
+    display: flex;
+}
+
+.img-container{
+    width: 80vw;
+    height: 100%;
+}
+
+.img-card{
+    display: none;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 20vw;
+}
+
+.img-car-container{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.set-img-car{
+    max-width: 100%;
+    height: calc(100% / 5);
+    object-fit: cover;
+    opacity: 0.5;
 }
