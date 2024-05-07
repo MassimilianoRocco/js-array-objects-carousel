@@ -1,1 +1,3 @@
 creaHtml();
+nextClick();
+prevClick();

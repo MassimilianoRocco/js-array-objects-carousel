@@ -41,7 +41,8 @@ function creaHtml(){
         imgElement.className = "img-card";
         imgContainer.append(imgElement);
     }
-    //AGGIUNGO LA CLASSE ACTIVE -----DA SISTEMARE 
+
+    //AGGIUNGO LA CLASSE ACTIVE
     let activeImg = document.getElementsByClassName("img-card");
     activeImg[0].classList.add("active");
     activeImg[3].classList.add("img-pos-left");
@@ -50,7 +51,7 @@ function creaHtml(){
     //parte laterale dx
     let carouselContainer = document.createElement("div");
     carouselContainer.className= "carousel";
-    mainElement.append(carouselContainer);
+    container.append(carouselContainer);
 
     let imgCarContainer = document.createElement("div");
     imgCarContainer.className="img-car-container" ;
@@ -63,8 +64,99 @@ function creaHtml(){
         imgCarElem.className="set-img-car";
         imgCarContainer.append(imgCarElem);
     }
+
+    //AGGIUNGO LA CLASSE SELECTED
     let selectedImg = document.getElementsByClassName("set-img-car");
     selectedImg[0].classList.add("selected");
     selectedImg[3].classList.add("img-pos-left");
     selectedImg[2].classList.add("img-pos-left");
+
+    //BUTTONS
+    let upButtonContainer = document.createElement("div");
+    upButtonContainer.className = "first-button-container";
+    carouselContainer.append(upButtonContainer);
+
+    let upButton = document.createElement("button");
+    upButton.innerHTML = "&#11165";
+    upButton.className = "button";
+    upButton.id = "prevB";
+    upButtonContainer.append(upButton);
+
+
+
+
+    let downButtonContainer = document.createElement("div");
+    downButtonContainer.className = "second-button-container";
+    carouselContainer.append(downButtonContainer);
+
+    let downButton = document.createElement("button");
+    downButton.innerHTML = "&#11167";
+    downButton.className = "button";
+    downButton.id = "nextB";
+    downButtonContainer.append(downButton);
+}
+
+
+//NEXT BUTTON CLICK FUNCTION
+function nextClick(){
+document.getElementById("nextB").addEventListener("click", function(){
+
+    const selectedImg = document.querySelector(".active");
+    const selectedEffect = document.querySelector(".selected");
+    
+    let nextImg = selectedImg.nextElementSibling;
+    let nextEffect = selectedEffect.nextElementSibling;
+
+    selectedImg.classList.remove("active");
+    selectedEffect.classList.remove("selected");
+
+    if(nextImg == null){
+        nextImg= document.querySelector(".img-card:first-child"); 
+        nextImg.classList.add("active");
+    }
+    else{
+    nextImg.classList.add("active");
+    }
+
+    if(nextEffect == null){
+        nextEffect= document.querySelector(".set-img-car:first-child"); 
+        nextEffect.classList.add("selected");
+    }
+    else{
+    nextEffect.classList.add("selected");
+    }
+});
+}
+
+
+
+//PREVIOUS BUTTON CLICK FUNCTION
+function prevClick(){
+document.getElementById("prevB").addEventListener("click", function(){
+    
+    const selectedImg = document.querySelector(".active");
+    const selectedEffect = document.querySelector(".selected");
+
+    let nextImg = selectedImg.previousElementSibling;
+    let nextEffect = selectedEffect.previousElementSibling;
+    
+    selectedImg.classList.remove("active");
+    selectedEffect.classList.remove("selected");
+
+    if(nextImg == null){
+        nextImg= document.querySelector(".img-card:last-of-type"); 
+        nextImg.classList.add("active");
+    }
+    else{
+    nextImg.classList.add("active");
+    }
+
+    if(nextEffect == null){
+        nextEffect= document.querySelector(".set-img-car:last-child"); 
+        nextEffect.classList.add("selected");
+    }
+    else{
+    nextEffect.classList.add("selected");
+    }
+});
 }

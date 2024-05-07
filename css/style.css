@@ -48,6 +48,11 @@
     height: 100%;
     object-fit: cover;
 }
+.text-container{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
 
 .carousel{
     display: flex;
@@ -62,9 +67,30 @@
     height: 100%;
 }
 
+
 .set-img-car{
     max-width: 100%;
     height: calc(100% / 5);
     object-fit: cover;
     opacity: 0.5;
+}
+
+.first-button-container{
+    position: absolute;
+    top: 1rem;
+    right: 50%;
+}
+
+.second-button-container{
+    position: absolute;
+    bottom: 1rem;
+    right: 50%;
+    transform: translate(50%, 50%);
+}
+
+button{
+    padding: 1px;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: white;
 }
