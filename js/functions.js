@@ -22,12 +22,16 @@ const images = [
     }
 ];
 
+//INDICE PER LA FUNCTION CREATEXT
+let indice = 0;  
+
 function creaHtml(){
     let mainElement = document.getElementById("main");
     mainElement.className = "main";
 
     let container = document.createElement("div");
     container.className = "container";
+    container.id = "container";
     mainElement.append(container);
 
     let imgContainer = document.createElement("div");
@@ -96,6 +100,71 @@ function creaHtml(){
     downButtonContainer.append(downButton);
 }
 
+//ADD TEXT TO IMAGE FUNCTION
+function createTextContainer(object){
+
+    if(document.getElementById("text-container") == undefined){
+
+    const container = document.getElementById("container");
+    let textContainer = document.createElement("div");
+    textContainer.id = "text-container";
+    textContainer.className="text-container";
+    container.append(textContainer);
+
+    let title = document.createElement("h3");
+    title.innerHTML = object.title;
+    textContainer.appendChild(title);
+
+    let description = document.createElement("p");
+    description.innerHTML=object.text;
+    textContainer.appendChild(description);
+    }
+
+    else{
+        document.getElementById("text-container").remove();
+
+        const container = document.getElementById("container");
+        let textContainer = document.createElement("div");
+        textContainer.id = "text-container";
+        textContainer.className="text-container";
+        container.append(textContainer);
+
+        let title = document.createElement("h3");
+        title.innerHTML = object.title;
+        textContainer.appendChild(title);
+
+        let description = document.createElement("p");
+        description.innerHTML=object.text;
+        textContainer.appendChild(description);
+    }
+}
+
+function createText(){
+    document.getElementById("nextB").addEventListener("click", function(){
+
+        if(indice==images.length-1){
+            indice = 0;
+            createTextContainer(images[indice]);
+        }
+        else{
+            createTextContainer(images[++indice]);
+        }
+
+    });
+
+    document.getElementById("prevB").addEventListener("click", function(){
+
+        if(indice==0){
+          indice = 4;
+          createTextContainer(images[indice]);
+        }
+        else{
+            createTextContainer(images[--indice]);
+        }
+    });
+
+
+}
 
 //NEXT BUTTON CLICK FUNCTION
 function nextClick(){
@@ -125,6 +194,7 @@ document.getElementById("nextB").addEventListener("click", function(){
     else{
     nextEffect.classList.add("selected");
     }
+
 });
 }
 
@@ -159,4 +229,5 @@ document.getElementById("prevB").addEventListener("click", function(){
     nextEffect.classList.add("selected");
     }
 });
+
 }
